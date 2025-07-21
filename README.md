@@ -19,14 +19,18 @@
 <img width="1349" height="441" alt="Screenshot 2025-07-22 at 12 49 17 AM" src="https://github.com/user-attachments/assets/859b5c8c-4ab8-48f2-a59b-c48e51539dc1" />
 
 
+4. Controller level reponsibility : 
 
-4. Notification system on Due pass date using Spring Cron Scheduler.
+<img width="1050" height="195" alt="Screenshot 2025-07-22 at 1 58 41 AM" src="https://github.com/user-attachments/assets/f3a9d344-2679-4df7-9951-50fc5e4c938b" />
 
-5. ControllerAdvice to handle exceptions globally across the controllers.
 
-6. Using @Transactional, while borrowing and returning the book.
+5.  Notification system on Due pass date using Spring Cron Scheduler.
 
-7. Pagination, sorting and filters to fetch the list of books.
+6. ControllerAdvice to handle exceptions globally across the controllers.
+
+7. Using @Transactional, while borrowing and returning the book.
+
+8. Pagination, sorting and filters to fetch the list of books.
 
 
 
