@@ -42,5 +42,5 @@ public class Book {
     private Date createdAt;
 
     @Column(columnDefinition = "BOOLEAN DEFAULT true")
-    private boolean available = true;
+    private boolean isAvailable = true;
 }

@@ -46,4 +46,7 @@ public class User {
     @Column(nullable = false, length = 20)
     private Role role;
 
+    @Column(columnDefinition = "BOOLEAN DEFAULT true", nullable = false)
+    private boolean isActive = true;
+
 }
