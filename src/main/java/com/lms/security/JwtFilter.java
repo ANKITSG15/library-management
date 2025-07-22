@@ -37,10 +37,12 @@ public class JwtFilter extends OncePerRequestFilter {
                 email = jwtUtil.extractEmail(token);
                 if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                     User user = userRepository.findByEmail(email).orElse(null);
-                    if (user != null) {
+                    if (user != null && user.isActive()) {
                         UsernamePasswordAuthenticationToken auth
                                 = new UsernamePasswordAuthenticationToken(user, null, List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name())));
                         SecurityContextHolder.getContext().setAuthentication(auth);
+                    } else {
+                        throw new RuntimeException("User is not registered or not active");
                     }
                 }
             } catch (Exception e) {

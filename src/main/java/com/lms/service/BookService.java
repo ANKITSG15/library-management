@@ -20,14 +20,14 @@ public class BookService {
 
     public Book create(BookRequestDto bookRequestDto) {
         if (Boolean.TRUE.equals(bookRepository.existsBookByIsbnNumber(bookRequestDto.getIsbnNumber()))) {
-            return null;
+            throw new IllegalArgumentException("ISBN number already exist");
         }
         return bookRepository.save(Book.builder()
                 .title(bookRequestDto.getBookTitle())
                 .author(bookRequestDto.getAuthorName())
                 .isbnNumber(bookRequestDto.getIsbnNumber())
+                .isAvailable(true)
                 .build());
-
     }
 
     public Book update(BookRequestDto bookRequestDto) {
@@ -37,7 +37,7 @@ public class BookService {
                     bookEntityDto.setAuthor(bookRequestDto.getAuthorName() != null ? bookRequestDto.getAuthorName() : bookEntityDto.getAuthor());
                     bookEntityDto.setIsbnNumber(bookRequestDto.getIsbnNumber() != null ? bookRequestDto.getIsbnNumber() : bookEntityDto.getIsbnNumber());
                     return bookRepository.save(bookEntityDto);
-                }).orElse(null);
+                }).orElseThrow(() -> new IllegalArgumentException(String.format("Invalid book-id: %s", bookRequestDto.getBookId())));
     }
 
     public Page<Book> findByPaginationAndSorting(Specification<Book> spec, Pageable pageable) {

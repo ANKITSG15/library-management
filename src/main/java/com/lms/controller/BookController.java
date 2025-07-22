@@ -11,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,11 +32,7 @@ public class BookController {
     @PostMapping
     @PreAuthorize("hasAuthority('ROLE_LIBRARIAN')")
     public ResponseEntity<Book> create(@RequestBody BookRequestDto bookRequestDto) {
-        Book savedBookDto = bookService.create(bookRequestDto);
-        if (savedBookDto == null) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedBookDto);
+        return ResponseEntity.ok().body(bookService.create(bookRequestDto));
     }
 
     @GetMapping
@@ -59,7 +54,7 @@ public class BookController {
         return bookService.findByPaginationAndSorting(spec, pageable);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     @PreAuthorize("hasAuthority('ROLE_LIBRARIAN')")
     public ResponseEntity<Book> update(@RequestBody BookRequestDto bookRequestDto) {
         Book book = bookService.update(bookRequestDto);
