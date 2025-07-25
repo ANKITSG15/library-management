@@ -1,6 +1,6 @@
 package com.lms.exception;
 
-import com.lms.controller.GlobalErrorResponseDto;
+import com.lms.dto.GlobalErrorResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.InsufficientAuthenticationException;

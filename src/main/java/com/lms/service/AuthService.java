@@ -38,6 +38,7 @@ public class AuthService {
                 .email(authRequest.getEmail())
                 .role(role)
                 .password(authRequest.getPassword())
+                .isActive(true)
                 .build();
         User user = userRepository.save(memberUser);
         if (Role.MEMBERS.equals(role)) {

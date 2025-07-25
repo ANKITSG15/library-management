@@ -33,5 +33,4 @@ public class JwtUtil {
     public String extractEmail(String token) {
         return extractClaims(token).getSubject();
     }
-
 }

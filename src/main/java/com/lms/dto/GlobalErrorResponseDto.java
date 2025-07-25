@@ -1,4 +1,4 @@
-package com.lms.controller;
+package com.lms.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
